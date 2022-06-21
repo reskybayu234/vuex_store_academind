@@ -13,5 +13,18 @@ export const store = new Vuex.Store({
             {id: 3, name: 'Chris', registered: false},
             {id: 4, name: 'Sven', registered: false}
         ]
+    },
+    getters : {
+        unregisteredUser(state){
+            return state.users.filter(user => {
+                return !user.registered
+            });
+        },
+        registrations(state){
+            return state.registrations;
+        },
+        totalRegistration(state){
+            return state.registrations.length;
+        }
     }
 })

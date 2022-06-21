@@ -1,6 +1,6 @@
 <template>
     <div id="registration">
-        <h3>Register here</h3>
+        <h3>Registration.vue</h3>
         <hr>
         <div class="row" v-for="(user,index) in users" v-bind:key="index">
             <h4>{{ user.name }}</h4>
@@ -13,9 +13,7 @@
     export default {
         computed : {
             users(){
-                return this.$store.state.users.filter(user => {
-                    return !user.registered
-                });
+                return this.$store.getters.unregisteredUser;
             }
         },
         methods : {
