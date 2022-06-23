@@ -16,13 +16,18 @@
 <script>
     import { mapGetters } from 'vuex';
     export default {
-        methods: {
-            unregister(registration) {
-                const user = this.$store.state.users.find(user => {
-                    return user.id == registration.userId;
-                });
-                user.registered = false;
-                this.$store.state.registrations.splice(this.$store.state.registrations.indexOf(registration), 1);
+        methods: { 
+            // unregister(registration) {
+            //     this.$store.commit( {
+            //         type : 'unregister',
+            //         userId : registration.userId
+            //     });
+            // }
+            unregister(registration){
+                this.$store.dispatch({
+                    type : 'unregister',
+                    userId : registration.userId
+                })
             }
         },
         computed: {
@@ -30,12 +35,6 @@
                 total : 'totalRegistration',
                 registrations : 'registrations'
             })
-            // total() {
-            //     return this.$store.getters.totalRegistration;
-            // },
-            // registrations(){
-            //     return this.$store.getters.registrations;
-            // }
         }
     }
 </script>

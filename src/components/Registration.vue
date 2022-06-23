@@ -17,10 +17,9 @@
             }
         },
         methods : {
-            registerUser(user) {
-                const date = new Date; 
-                this.$store.state.registrations.push({userId: user.id, name: user.name, date: date.getMonth() + '/' + date.getDay()})
-                user.registered = true;
+            registerUser(userId) {
+                //this.$store.commit('register',userId);
+                this.$store.dispatch('register',userId);
             }
         }
     }
